@@ -1,7 +1,8 @@
 package org.cstemp.nsq.config;
 
 import lombok.RequiredArgsConstructor;
-import org.cstemp.nsq.user.UserRepository;
+
+import org.cstemp.nsq.repos.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
