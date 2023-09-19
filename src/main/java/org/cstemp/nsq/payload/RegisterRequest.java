@@ -1,4 +1,5 @@
-package org.cstemp.nsq.auth;
+package org.cstemp.nsq.payload;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,9 +13,9 @@ import org.cstemp.nsq.models.Role;
 @NoArgsConstructor
 public class RegisterRequest {
 
-  private String firstname;
-  private String lastname;
-  private String email;
-  private String password;
-  private Role role;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
+    private Role role;
 }

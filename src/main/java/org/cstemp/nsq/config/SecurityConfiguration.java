@@ -13,9 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static org.cstemp.nsq.user.Permission.*;
-import static org.cstemp.nsq.user.Role.ADMIN;
-import static org.cstemp.nsq.user.Role.MANAGER;
+//import static org.cstemp.nsq.models.relational.Profile.Permission.*;
+//import static org.cstemp.nsq.models.relational.PerformanceCriteria.Role.ADMIN;
+//import static org.cstemp.nsq.models.relational.PerformanceCriteria.Role.MANAGER;
+import static org.cstemp.nsq.models.Enums.Role.MANAGER;
+import static org.cstemp.nsq.models.Permission.*;
+import static org.cstemp.nsq.models.Role.ADMIN;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.DELETE;
 
