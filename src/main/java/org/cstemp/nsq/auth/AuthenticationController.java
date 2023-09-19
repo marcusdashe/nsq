@@ -3,6 +3,8 @@ package org.cstemp.nsq.auth;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.cstemp.nsq.payload.AuthenticationRequest;
+import org.cstemp.nsq.payload.AuthenticationResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

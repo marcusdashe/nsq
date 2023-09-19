@@ -6,11 +6,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.cstemp.nsq.config.JwtService;
-import org.cstemp.nsq.token.Token;
-import org.cstemp.nsq.token.TokenRepository;
-import org.cstemp.nsq.token.TokenType;
-import org.cstemp.nsq.user.User;
-import org.cstemp.nsq.user.UserRepository;
+import org.cstemp.nsq.models.Enums;
+import org.cstemp.nsq.models.relational.User;
+import org.cstemp.nsq.payload.AuthenticationRequest;
+import org.cstemp.nsq.payload.AuthenticationResponse;
+import org.cstemp.nsq.repos.UserRepository;
+import org.cstemp.nsq.models.relational.Token;
+import org.cstemp.nsq.repos.TokenRepository;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -69,7 +72,7 @@ public class AuthenticationService {
     var token = Token.builder()
             .user(user)
             .token(jwtToken)
-            .tokenType(TokenType.BEARER)
+            .tokenType(Enums.TokenType.BEARER)
             .expired(false)
             .revoked(false)
             .build();

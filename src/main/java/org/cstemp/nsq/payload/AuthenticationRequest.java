@@ -1,4 +1,4 @@
-package org.cstemp.nsq.auth;
+package org.cstemp.nsq.payload;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

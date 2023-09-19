@@ -1,4 +1,4 @@
-package org.cstemp.nsq.auth;
+package org.cstemp.nsq.payload;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
