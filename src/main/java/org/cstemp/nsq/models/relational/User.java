@@ -1,6 +1,7 @@
 package org.cstemp.nsq.models.relational;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.jsonwebtoken.lang.Collections;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -32,7 +33,7 @@ import java.util.Objects;
 public class User  extends BaseModel implements UserDetails {
 
     @Transient
-    private static final AppEncoder encoder = new AppEncoder();
+    public static final AppEncoder encoder = new AppEncoder();
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -82,10 +83,10 @@ public class User  extends BaseModel implements UserDetails {
         return firstname + " " + lastname;
     }
 
-//    @Transient
-//    public List<String> getRolesList() {
-//        return Collections.arrayToList(roles.split(","));
-//    }
+    @Transient
+    public List<String> getRolesList() {
+        return Collections.arrayToList(role.name().split(","));
+    }
 
 //    public void addRole(String role) {
 //        if ("".equals(this.roles)) {

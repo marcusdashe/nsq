@@ -49,7 +49,15 @@ public class SecurityConfiguration {
                         "/configuration/security",
                         "/swagger-ui/**",
                         "/webjars/**",
-                        "/swagger-ui.html"
+                        "/swagger-ui.html",
+                        "/v1/storage/download/**",
+                        "/v1/programme/**",
+                        "/v1/centre/download-template/**",
+                        "/v1/trainee/download-template/**",
+                        "/v1/assessor/invite/xlsx/**",
+                        "/v1/internal-verifier/download-template/**",
+                        "/v1/external-verifier/download-template/**",
+                        "/v1/assessment-unit/**"
                 )
                 .permitAll()
 

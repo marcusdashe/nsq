@@ -5,7 +5,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.cstemp.nsq.models.relational.Invite;
+import org.cstemp.nsq.models.relational.Portfolio;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,11 @@ public class JwtService {
 
         return generateToken(new HashMap<>(), userDetails);
     }
+
+    public String getSubjectFromJwtToken(String token) {
+        return Jwts.parser().setSigningKey(getSignInKey()).parseClaimsJws(token).getBody().getSubject();
+    }
+
 
     public String generateToken(
             Map<String, Object> extraClaims,
@@ -95,5 +103,33 @@ public class JwtService {
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+
+    public String generateJwtToken(Authentication authentication) {
+
+        UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
+
+        return Jwts.builder()
+                .setSubject((userPrincipal.getUsername()))
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpiration))
+                .signWith(getSignInKey())
+                .compact();
+    }
+
+
+    public String generateJwtToken(Invite assessorInvite) {
+
+        return Jwts.builder()
+                .setSubject(assessorInvite.getId() + "")
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + jwtExpiration))
+                .signWith(getSignInKey())
+                .compact();
+    }
+
+    public String generateJwtToken(Portfolio portfolio) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
