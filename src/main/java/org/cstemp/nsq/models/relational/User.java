@@ -30,7 +30,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User  extends BaseModel implements UserDetails {
+public class User extends BaseModel implements UserDetails {
 
     @Transient
     public static final AppEncoder encoder = new AppEncoder();

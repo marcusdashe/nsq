@@ -9,8 +9,9 @@ package org.cstemp.nsq.payload;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.Builder;
 import lombok.Data;
-
+import org.cstemp.nsq.models.Role;
 
 
 /**
@@ -20,7 +21,15 @@ import lombok.Data;
 public class RegisterPayload {
 
     @Data
+    @Builder
     public static class RegisterRequest {
+
+//        private String firstname;
+//        private String lastname;
+//        private String email;
+//        private String password;
+//        private Role role;
+
 
         @NotBlank(message = "First name is required")
         private String firstName;
@@ -31,7 +40,7 @@ public class RegisterPayload {
         @Email
         private String email;
 
-        @NotBlank(message = "User Role is required")
+//        @NotBlank(message = "User Role is required")
         private String role;
 
         @NotBlank(message = "Phone Number is required")
